@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title>Boggle</title>
+		<style>
+			body {
+				font-size: 24px;
+			}
+			#boggle {
+				display: grid;
+				grid-template-columns: 20% 20% 20% 20%;
+				grid-template-rows: 20% 20% 20% 20%;
+				height: 600px;
+				margin: 20px auto;
+				text-transform: capitalize;
+				width: 800px;
+			}
+			#boggle>div {
+				border: 1px solid black;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="boggle">
+			<div>G</div>
+			<div>A</div>
+			<div>E</div>
+			<div>U</div>
+
+			<div>G</div>
+			<div>A</div>
+			<div>E</div>
+			<div>U</div>
+
+			<div>G</div>
+			<div>A</div>
+			<div>E</div>
+			<div>U</div>
+
+			<div>G</div>
+			<div>A</div>
+			<div>E</div>
+			<div>U</div>
+		</div>
+		<script>
+const dice = [
+	[ 'G', 'I', 'V', 'N', 'E', 'T' ],
+	[ 'O', 'W', 'N', 'D', 'E', 'S' ],
+	[ 'H', 'I', 'P', 'N', 'E', 'S' ],
+	[ 'N', 'O', 'K', 'D', 'U', 'T' ],
+	[ 'Y', 'I', 'F', 'H', 'E', 'E' ],
+	[ 'C', 'R', 'E', 'S', 'A', 'L' ],
+	[ 'A', 'N', 'V', 'D', 'E', 'Z' ],
+	[ 'T', 'U', 'L', 'P', 'E', 'S' ],
+	[ 'G', 'E', 'K', 'Y', 'L', 'U' ],
+	[ 'R', 'I', 'W', 'G', 'U', 'L' ],
+	[ 'B', 'O', 'Qu', 'J', 'A', 'M' ],
+	[ 'S', 'A', 'R', 'M', 'O', 'H' ],
+	[ 'P', 'E', 'D', 'C', 'A', 'M' ],
+	[ 'A', 'O', 'C', 'T', 'I', 'A' ],
+	[ 'B', 'I', 'L', 'T', 'A', 'Y' ],
+	[ 'F', 'I', 'X', 'B', 'O', 'R' ],
+];
+
+document.querySelector('#boggle').innerHTML = dice.map(
+	(die) => {
+		const rolledDie = shuffle(die);
+		return `<div>${die[0]}</div>`
+	}
+).join('');
+
+// https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
+	var currentIndex = array.length, temporaryValue, randomIndex;
+
+	// While there remain elements to shuffle...
+	while (0 !== currentIndex) {
+
+		// Pick a remaining element...
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex -= 1;
+
+		// And swap it with the current element.
+		temporaryValue = array[currentIndex];
+		array[currentIndex] = array[randomIndex];
+		array[randomIndex] = temporaryValue;
+	}
+
+	return array;
+}
+		</script>
+	</body>
+</html>
+
