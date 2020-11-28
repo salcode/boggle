@@ -64,12 +64,12 @@ const dice = [
 	[ 'F', 'I', 'X', 'B', 'O', 'R' ],
 ];
 
-document.querySelector('#boggle').innerHTML = dice.map(
+document.querySelector('#boggle').innerHTML = shuffle(dice.map(
 	(die) => {
 		const rolledDie = shuffle(die);
 		return `<div>${die[0]}</div>`
 	}
-).join('');
+)).join('');
 
 // https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 function shuffle(array) {
